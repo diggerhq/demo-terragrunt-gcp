@@ -11,3 +11,15 @@ remote_state {
     location  = "europe-west2"
   }
 }
+
+generate "provider" {
+  path = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents = <<EOF
+provider "google" {
+  project = "digger-landing"
+  region  = "europe-west2"
+  zone    = "europe-west2-a"
+}
+EOF
+}
