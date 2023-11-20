@@ -16,6 +16,14 @@ generate "provider" {
   path = "provider.tf"
   if_exists = "overwrite_terragrunt"
   contents = <<EOF
+terraform {
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = "5.6.0"
+    }
+  }
+}
 provider "google" {
   project = "digger-landing"
   region  = "europe-west2"
