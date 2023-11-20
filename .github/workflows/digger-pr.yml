@@ -1,0 +1,32 @@
+name: Digger
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [ opened, synchronize ]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  plan:
+    name: Digger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+        create_credentials_file: true
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+    - name: 'Use gcloud CLI'
+      run: 'gcloud info'
+    - name: digger run
+      uses: diggerhq/digger@v0.2.6
+      with:
+        disable-locking: true
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
