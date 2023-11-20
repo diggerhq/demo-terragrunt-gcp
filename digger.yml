@@ -1,0 +1,5 @@
+projects:
+- name: development
+  dir: dev
+- name: production
+  dir: prod
