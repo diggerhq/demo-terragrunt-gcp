@@ -24,7 +24,7 @@ jobs:
     - name: 'Use gcloud CLI'
       run: 'gcloud info'
     - name: digger run
-      uses: diggerhq/digger@feat/force-auth
+      uses: diggerhq/digger@feat/empty-plan-handling
       with:
         disable-locking: true
       env:
