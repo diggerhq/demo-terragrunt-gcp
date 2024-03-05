@@ -1,5 +1,7 @@
 projects:
 - name: development
   dir: dev
+  terragrunt: true
 - name: production
   dir: prod
+  terragrunt: true
