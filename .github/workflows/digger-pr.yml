@@ -24,7 +24,7 @@ jobs:
     - name: 'Use gcloud CLI'
       run: 'gcloud info'
     - name: digger run
-      uses: diggerhq/digger@feat/empty-plan-handling
+      uses: diggerhq/digger@v0.4.6
       with:
         disable-locking: true
         no-backend: true
